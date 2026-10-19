@@ -1,0 +1,61 @@
+So far, we agreed we'd use Unsplash API. Consequently, we need to know
+what kinds of request you can send it and what kind of information
+it will return.
+
+There are 6 kinds of requests you can send it:
+
+1. https://unsplash.com/documentation#users
+   This request specifies a user, then the API responds
+   with the details of the user, including their photos.
+
+2. https://unsplash.com/documentation#photos
+   This request specifies a photo by id, then the API responds
+   with the details of the photo.
+
+3. https://unsplash.com/documentation#search
+   This request specifies a search term 
+   (which a user would input in the search bar), then the API responds
+   with a group of photos matching the search term.
+4. https://unsplash.com/documentation#collections
+   This request specifies a collection by id, then the API responds
+   with a group of photos corresponding to the collection.
+5. https://unsplash.com/documentation#topics
+   This request specifies a topic (which are the categories on the home page), then the API responds with a group of the latest photos matching the topic.
+
+6. https://unsplash.com/documentation#stats
+   This request fetches site-wide statistics for all users as a whole.
+
+There are many kinds of requests we can send to the Unsplash API.
+For each kind of request, there exist many individual Queries we can send.
+Each Query fits a pre-determined format, but each Query is defined
+from its unique Query Link. 
+
+Here is an example of the Query format, that is passed into the CMD, after putting in your unique Query Link. The response will be in JSON, which we will pipe into a text file:
+curl -H "Authorization: Client-ID vim6b-zXPhN6ZrmJi4t7U6cqNev_G-7KjxUZg-E8tEM" "[Query Link]" > "My Query.txt"
+
+Note: 'Slug' means 'caption', in the sense of 'image caption'.
+
+List of all Query Links:
+[Users]
+https://api.unsplash.com/users/sabazioccivanza
+(Return the group of all photos from user 'sabazioccivanza')
+
+https://api.unsplash.com/users/sabazioccivanza/photos
+(Return the group of all photos from user 'sabazioccivanza')
+
+https://api.unsplash.com/users/sabazioccivanza/collections
+(Return the group of all collections from user 'sabazioccivanza')
+
+https://api.unsplash.com/users/sabazioccivanza/statistics
+(Return the group of all statistics from user 'sabazioccivanza')
+
+[Topics]
+https://api.unsplash.com/topics
+(Return the group of all categories on the home page as a dictionary of dictionaries, with each dictionary containing category details.)
+
+https://api.unsplash.com/topics/{topicSlug}
+
+
+[Search]
+https://api.unsplash.com/search/photos?query=cats
+(Search 'cats' from Search Bar)

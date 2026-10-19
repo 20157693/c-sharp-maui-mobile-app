@@ -1,0 +1,5 @@
+1. Accepted Project: C# MAUI
+2. Agreed on API: Unsplash API
+3. Mapped out all different kinds of API requests to Unsplash,
+   and all the kinds of information you can receive.
+4. 

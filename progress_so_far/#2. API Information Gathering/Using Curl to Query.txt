@@ -1,0 +1,46 @@
+Example Query Format:
+curl -H "Authorization: Client-ID vim6b-zXPhN6ZrmJi4t7U6cqNev_G-7KjxUZg-E8tEM" ^
+"[Query Link]" > "JSON Curl Testing Ground.txt"
+
+The Same Query Without Changing Lines:
+curl -H "Authorization: Client-ID vim6b-zXPhN6ZrmJi4t7U6cqNev_G-7KjxUZg-E8tEM" "[Query Link]" > "JSON Curl Testing Ground.txt"
+
+Example Query: Search 'cats' from Search Bar
+curl -H "Authorization: Client-ID vim6b-zXPhN6ZrmJi4t7U6cqNev_G-7KjxUZg-E8tEM" ^
+"https://api.unsplash.com/search/photos?query=cats"
+
+Example Query: Pull all photos from user 'sabazioccivanza'
+curl -H "Authorization: Client-ID vim6b-zXPhN6ZrmJi4t7U6cqNev_G-7KjxUZg-E8tEM" ^
+"https://api.unsplash.com/users/sabazioccivanza"
+
+Search 'cats' from Search Bar and pipe it into "JSON Result.txt"
+curl -H "Authorization: Client-ID vim6b-zXPhN6ZrmJi4t7U6cqNev_G-7KjxUZg-E8tEM" "https://api.unsplash.com/search/photos?query=cats" > "JSON Result.txt"
+
+https://jsongrid.com/json-grid
+
+Index Col: (.)  Image Number
+Column 1 : (.)  Photo ID
+Column 2 : (T)  Photo Captions in Languages
+Column 3 : (.)  Date Created
+Column 4 : (.)  Date Updated
+Column 5 : (.)  Date Promoted
+Column 6 : (.)  Photo Width
+Column 7 : (.)  Photo Height
+Column 8 : (.)  Photo General Colour
+Column 9 : (.)? Blur Hash
+Column 10: (.)  Photo Description
+Column 11: (.)? Breadcrumbs
+Column 12: (T)  Photo Hosting Links in Sizes
+Column 13: (.)  Likes
+Column 14: (.)  Liked by Me
+Column 15: (.)  Bookmarked by Me
+Column 16: (T)  Collections Containing Photo
+Column 17: (.)? Sponsorship
+Column 18: (T)  Pages Author Submitted to
+Column 19: (.)  Media Type
+Column 20: (.)? Slug (Photo Caption Code)
+Column 21: (.)  Alt Text
+Column 22: (T)  Photo Links (Download/Main Location/API)
+Column 23: (T)  Author Information
+
+T: Table
