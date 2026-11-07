@@ -1,0 +1,19 @@
+UnsplashApp/
+├── Platforms/
+│   └── Android/
+├── Resources/
+│   ├── AppIcon/
+│   ├── Fonts/
+│   ├── Images/
+│   ├── Raw/
+│   ├── Splash/
+│   └── Styles/
+├── Properties/
+├── App.xaml
+├── App.xaml.cs
+├── AppShell.xaml
+├── AppShell.xaml.cs
+├── MainPage.xaml
+├── MainPage.xaml.cs
+├── MauiProgram.cs
+└── UnsplashApp.csproj

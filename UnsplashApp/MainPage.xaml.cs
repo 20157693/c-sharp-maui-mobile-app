@@ -2,23 +2,24 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
 
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        private void OnSearchClicked(object sender, EventArgs e)
         {
-            count++;
+            // Nullable string
+            string? search = SearchEntry.Text;
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+            if (string.IsNullOrWhiteSpace(search))
+            {
+                StatusLabel.Text = "Please enter a search keyword.";
+                return;
+            }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            StatusLabel.Text = "You searched for " + search;
         }
     }
 }
