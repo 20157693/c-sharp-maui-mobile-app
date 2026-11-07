@@ -1,4 +1,6 @@
-﻿// Import Services
+﻿// Import JSON
+using System.Text.Json;
+// Import Services
 using UnsplashApp.Services;
 
 namespace UnsplashApp
@@ -30,8 +32,12 @@ namespace UnsplashApp
             {
                 string response = await _unsplashService.SearchPhotosAsync(search);
 
-                StatusLabel.Text = "Response received! Characters: "
-                    + response.Length;
+                // Convert JSON into C# object
+                using JsonDocument document = JsonDocument.Parse(response);
+
+                int total = document.RootElement.GetProperty("total").GetInt32();
+
+                StatusLabel.Text = "Photographs found: " + total;
             }
 
             catch (HttpRequestException)
