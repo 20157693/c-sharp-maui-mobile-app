@@ -13,6 +13,7 @@ namespace UnsplashApp.Models
         [JsonPropertyName("total_pages")]
         public int TotalPages { get; set; }
 
+        // This class contains the other class Photo
         [JsonPropertyName("results")]
         public List<Photo>? Results { get; set; }
     }

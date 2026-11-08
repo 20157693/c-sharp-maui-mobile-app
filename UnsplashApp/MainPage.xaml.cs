@@ -53,6 +53,21 @@ namespace UnsplashApp
                 int count = result.Results?.Count ?? 0;
 
                 StatusLabel.Text = $"Photographs found: {total}. Received: {count}.";
+                // If API returned at least one photo
+                if (count > 0)
+                {
+                    // Results is not null
+                    Photo firstPhoto = result.Results![0];
+                    // Allow null since it can be valid JSON
+                    string? imageUrl = firstPhoto.Urls?.Regular;
+
+                    if (!string.IsNullOrEmpty(imageUrl))
+                    {
+                        // From XAML
+                        // Load image as URI from URL
+                        PhotoImage.Source = ImageSource.FromUri(new Uri(imageUrl));
+                    }
+                }
             }
 
             catch (HttpRequestException)
