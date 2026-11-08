@@ -1,7 +1,9 @@
 ﻿// Import JSON
 using System.Text.Json;
-// Import Services
+// Import Services; the API communicator
 using UnsplashApp.Services;
+// Import Models; the JSON parsers
+using UnsplashApp.Models;
 
 namespace UnsplashApp
 {
@@ -17,6 +19,7 @@ namespace UnsplashApp
 
         private async void OnSearchClicked(object sender, EventArgs e)
         {
+            // User input from search bar
             // Nullable string
             string? search = SearchEntry.Text;
 
@@ -32,12 +35,24 @@ namespace UnsplashApp
             {
                 string response = await _unsplashService.SearchPhotosAsync(search);
 
-                // Convert JSON into C# object
-                using JsonDocument document = JsonDocument.Parse(response);
+                /* 'result' is a variable containing class 'SearchResult'
+                    into which JSON has been parsed and distributed into
+                    its fields. */
+                // 'result' is the partially parsed JSON.
+                SearchResult? result = JsonSerializer.Deserialize<SearchResult>(response);
 
-                int total = document.RootElement.GetProperty("total").GetInt32();
+                if (result == null)
+                {
+                    StatusLabel.Text = "Could not read the response.";
+                    return;
+                }
+                // Total photographs matching query
+                int total = result.Total;
+                // Number of items in list of photos
+                // Total photographs in batch received
+                int count = result.Results?.Count ?? 0;
 
-                StatusLabel.Text = "Photographs found: " + total;
+                StatusLabel.Text = $"Photographs found: {total}. Received: {count}.";
             }
 
             catch (HttpRequestException)

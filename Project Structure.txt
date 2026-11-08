@@ -1,6 +1,9 @@
 UnsplashApp/
+├── Models/
+│   ├── Photo.cs               | JSON parser.
+│   └── SearchResult.cs        | JSON parser.
 ├── Services/
-│   └── UnsplashService.cs
+│   └── UnsplashService.cs     | API connector.
 ├── Platforms/
 │   └── Android/
 ├── Resources/
@@ -11,11 +14,11 @@ UnsplashApp/
 │   ├── Splash/
 │   └── Styles/
 ├── Properties/
-├── App.xaml
-├── App.xaml.cs
+├── App.xaml                   |
+├── App.xaml.cs                |
 ├── AppShell.xaml
 ├── AppShell.xaml.cs
-├── MainPage.xaml
-├── MainPage.xaml.cs
+├── MainPage.xaml              | Home Page UI.
+├── MainPage.xaml.cs           | Connects to all modules.
 ├── MauiProgram.cs
 └── UnsplashApp.csproj
