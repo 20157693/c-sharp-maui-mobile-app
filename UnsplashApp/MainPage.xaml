@@ -23,11 +23,6 @@
         <Label
             x:Name="StatusLabel"
             Text="Enter a keyword and click Search" />
-
-        <Image
-            x:Name="PhotoImage"
-            HeightRequest="300"
-            Aspect="AspectFit" />
         
     </VerticalStackLayout>
 

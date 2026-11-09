@@ -2,6 +2,9 @@ UnsplashApp/
 ├── Models/
 │   ├── Photo.cs               | JSON parser.
 │   └── SearchResult.cs        | JSON parser.
+├── Pages/
+│   ├── ResultsPage.xaml       |
+│   └── ResultsPage.xaml.cs    | Photo gallery displayer.
 ├── Services/
 │   └── UnsplashService.cs     | API connector.
 ├── Platforms/

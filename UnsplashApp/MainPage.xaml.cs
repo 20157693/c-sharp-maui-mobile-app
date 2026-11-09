@@ -4,6 +4,8 @@ using System.Text.Json;
 using UnsplashApp.Services;
 // Import Models; the JSON parsers
 using UnsplashApp.Models;
+// Import Pages; the navigation pages
+using UnsplashApp.Pages;
 
 namespace UnsplashApp
 {
@@ -53,21 +55,11 @@ namespace UnsplashApp
                 int count = result.Results?.Count ?? 0;
 
                 StatusLabel.Text = $"Photographs found: {total}. Received: {count}.";
-                // If API returned at least one photo
-                if (count > 0)
-                {
-                    // Results is not null
-                    Photo firstPhoto = result.Results![0];
-                    // Allow null since it can be valid JSON
-                    string? imageUrl = firstPhoto.Urls?.Regular;
-
-                    if (!string.IsNullOrEmpty(imageUrl))
-                    {
-                        // From XAML
-                        // Load image as URI from URL
-                        PhotoImage.Source = ImageSource.FromUri(new Uri(imageUrl));
-                    }
-                }
+                /* Order current Shell open 'ResultsPage'
+                   after passing through all processing and
+                   handling exceptions. */
+                // Async + Await ≈ Sequential
+                await Shell.Current.GoToAsync(nameof(ResultsPage));
             }
 
             catch (HttpRequestException)
