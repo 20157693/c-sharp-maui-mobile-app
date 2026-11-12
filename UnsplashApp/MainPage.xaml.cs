@@ -59,7 +59,19 @@ namespace UnsplashApp
                    after passing through all processing and
                    handling exceptions. */
                 // Async + Await ≈ Sequential
-                await Shell.Current.GoToAsync(nameof(ResultsPage));
+                await Shell.Current.GoToAsync(
+                    nameof(ResultsPage),
+                    new ShellNavigationQueryParameters
+                    {
+                        { "SearchResult", result }
+                    }
+                    );
+                /* What GoToAsync does is it jumps from the current
+                   execution line to the first line on the page,
+                   through the navigator. */
+                /* ShellNavigationQueryParameters exports values
+                   as we go on, so we make our variables
+                   available in that namespace. */
             }
 
             catch (HttpRequestException)

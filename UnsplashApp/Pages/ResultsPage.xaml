@@ -9,7 +9,8 @@
             Text="Search Results"
             FontSize="24" />
         <Label
-            Text="Photographs will appear here." />
+            x:Name="ResultsLabel"
+            Text="Waiting for search results..." />
     </VerticalStackLayout>
 
 </ContentPage>
