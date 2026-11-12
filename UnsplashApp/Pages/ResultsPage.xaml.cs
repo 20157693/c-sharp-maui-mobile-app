@@ -21,6 +21,8 @@ public partial class ResultsPage : ContentPage, IQueryAttributable
 			int count = result.Results?.Count ?? 0;
 
 			ResultsLabel.Text = $"Total: {total}. Received: {count}.";
+			// Send this to the CollectionView
+			PhotosCollection.ItemsSource = result.Results;
 		}
 	}
 }

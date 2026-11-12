@@ -4,13 +4,33 @@
              x:Class="UnsplashApp.Pages.ResultsPage"
              Title="Search Results">
 
-    <VerticalStackLayout Padding="20" Spacing="10">
+    <Grid Padding="20" RowDefinitions="Auto,*" RowSpacing="10">
+
         <Label 
-            Text="Search Results"
-            FontSize="24" />
-        <Label
             x:Name="ResultsLabel"
-            Text="Waiting for search results..." />
-    </VerticalStackLayout>
+            Grid.Row="0"
+            Text="Waiting for search results..."
+            FontSize="18" />
+
+        <CollectionView
+            x:Name="PhotosCollection"
+            Grid.Row="1">
+            <!--Access property of CollectionView-->
+            <CollectionView.ItemTemplate>
+                <!--Create a class for the template of each img-->
+                <!--This is the template for each image, reused-->
+                <DataTemplate>
+                    <!--Impute Urls.Small to the image-->
+                    <Image
+                        Source="{Binding Urls.Small}"
+                        HeightRequest="200"
+                        Aspect="AspectFill"
+                        Margin="0,5" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+        
+    </Grid>
 
 </ContentPage>
