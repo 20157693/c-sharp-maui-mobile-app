@@ -10,9 +10,17 @@
         <Label
             Text="Photo in Fullscreen"
             FontSize="24" />
+        <!--Set fixed height at 350-->
+        <!--Scale image proportionally to fit device screen-->
+        <Image
+            x:Name="SelectedPhotoImage"
+            HeightRequest="350"
+            Aspect="AspectFit" />
 
         <Label
-            Text="The individual photo will appear here." />
+            x:Name="PhotoDescription"
+            Text="Waiting for photograph..."
+            FontSize="16" />
 
     </VerticalStackLayout>
 
