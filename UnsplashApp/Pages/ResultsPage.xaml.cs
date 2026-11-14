@@ -37,6 +37,11 @@ public partial class ResultsPage : ContentPage, IQueryAttributable
 		// if currently-selected photo is of type Photo, create selectedPhoto var
 		if (e.CurrentSelection.FirstOrDefault() is Photo selectedPhoto)
 		{
+			/* Since our selected image is saved in the var.
+			   we clear the selection, so when we come back
+			   we get to select another image. */
+			PhotosCollection.SelectedItem = null;
+
 			await Shell.Current.GoToAsync(
 				nameof(PhotoDetailsPage),
 				new ShellNavigationQueryParameters
