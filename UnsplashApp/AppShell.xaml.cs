@@ -11,7 +11,12 @@ namespace UnsplashApp
 
             /* Defining the name of our Photos page 
                to later reference it as such. */
-            Routing.RegisterRoute(nameof(ResultsPage), typeof(ResultsPage));
+            Routing.RegisterRoute(
+                nameof(ResultsPage), typeof(ResultsPage));
+
+            // Idem for PhotoDetailsPage
+            Routing.RegisterRoute(
+                nameof(PhotoDetailsPage), typeof(PhotoDetailsPage));
         }
     }
 }

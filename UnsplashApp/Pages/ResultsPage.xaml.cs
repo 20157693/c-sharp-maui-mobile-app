@@ -29,17 +29,21 @@ public partial class ResultsPage : ContentPage, IQueryAttributable
 	private async void OnPhotoSelected(
 		object sender,
 		// Trigger Selection Event on click called 'e'
+		/* (The event only triggers if Selection is 'changed')
+		   Reselecting the same photo later is not expected
+		   to do anything. */
 		SelectionChangedEventArgs e)
 	{
 		// if currently-selected photo is of type Photo, create selectedPhoto var
 		if (e.CurrentSelection.FirstOrDefault() is Photo selectedPhoto)
 		{
-			// Display pop-up telling you the image is selected
-			await DisplayAlertAsync(
-				"Photograph selected",
-				selectedPhoto.AltDescription ?? "No Description",
-				// OK message to close pop-up
-				"OK");
+			await Shell.Current.GoToAsync(
+				nameof(PhotoDetailsPage),
+				new ShellNavigationQueryParameters
+				{
+					{ "SelectedPhoto", selectedPhoto }
+				}
+			);
 		}
 	}
 }
