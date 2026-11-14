@@ -25,4 +25,21 @@ public partial class ResultsPage : ContentPage, IQueryAttributable
 			PhotosCollection.ItemsSource = result.Results;
 		}
 	}
+
+	private async void OnPhotoSelected(
+		object sender,
+		// Trigger Selection Event on click called 'e'
+		SelectionChangedEventArgs e)
+	{
+		// if currently-selected photo is of type Photo, create selectedPhoto var
+		if (e.CurrentSelection.FirstOrDefault() is Photo selectedPhoto)
+		{
+			// Display pop-up telling you the image is selected
+			await DisplayAlertAsync(
+				"Photograph selected",
+				selectedPhoto.AltDescription ?? "No Description",
+				// OK message to close pop-up
+				"OK");
+		}
+	}
 }

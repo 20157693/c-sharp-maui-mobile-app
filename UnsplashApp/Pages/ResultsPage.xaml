@@ -14,8 +14,11 @@
 
         <CollectionView
             x:Name="PhotosCollection"
-            Grid.Row="1">
-            <!--Access property of CollectionView-->
+            Grid.Row="1"
+            SelectionMode="Single"
+            SelectionChanged="OnPhotoSelected">
+            <!--Be able to select only one photo at a time-->
+            <!--Link Selection Change to Method-->
             <CollectionView.ItemTemplate>
                 <!--Create a class for the template of each img-->
                 <!--This is the template for each image, reused-->
