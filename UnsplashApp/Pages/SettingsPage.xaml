@@ -12,7 +12,10 @@
             FontSize="24" />
 
         <Label Text="Appearance" />
-        <Picker x:Name="AppearancePicker">
+        <!-- Execute OnSettingsChanged() if dropdown selected -->
+        <Picker
+            x:Name="AppearancePicker"
+            SelectedIndexChanged="OnAppearanceChanged">
             <Picker.Items>
                 <x:String>Light</x:String>
                 <x:String>Dark</x:String>
@@ -20,7 +23,9 @@
         </Picker>
 
         <Label Text="Images per Page" />
-        <Picker x:Name="ImagesPicker">
+        <Picker
+            x:Name="ImagesPicker"
+            SelectedIndexChanged="OnImagesChanged">
             <Picker.Items>
                 <x:String>5</x:String>
                 <x:String>10</x:String>
@@ -29,7 +34,9 @@
         </Picker>
 
         <Label Text="Collections per Page" />
-        <Picker x:Name="CollectionsPicker">
+        <Picker
+            x:Name="CollectionsPicker"
+            SelectedIndexChanged="OnCollectionsChanged">
             <Picker.Items>
                 <x:String>1</x:String>
                 <x:String>3</x:String>
