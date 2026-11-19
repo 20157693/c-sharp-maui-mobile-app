@@ -21,6 +21,10 @@
         Text="Search"
         Clicked="OnSearchClicked" />
 
+        <Button
+        Text="Settings"
+        Clicked="OnSettingsClicked" />
+
         <Label
             x:Name="StatusLabel"
             Text="Enter a keyword and click Search" />

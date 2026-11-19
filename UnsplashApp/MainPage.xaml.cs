@@ -79,5 +79,10 @@ namespace UnsplashApp
                 StatusLabel.Text = "The API request failed.";
             }
         }
+
+        private async void OnSettingsClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(SettingsPage));
+        }
     }
 }
