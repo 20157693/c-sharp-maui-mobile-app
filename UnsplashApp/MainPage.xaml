@@ -25,15 +25,6 @@
         x:Name="StatusLabel"
         Text="Enter a keyword and click Search" />
 
-        <Button
-        Text="LoadCollections"
-        Clicked="OnLoadCollectionsClicked" />
-
-        <!-- Text to display number of collections. -->
-        <Label
-        x:Name="CollectionsStatusLabel"
-        Text="Collections not loaded." />
-
         <CollectionView
         x:Name="CollectionsView"
         HeightRequest="350">

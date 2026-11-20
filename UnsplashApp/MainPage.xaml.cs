@@ -9,6 +9,7 @@ using UnsplashApp.Pages;
 
 namespace UnsplashApp
 {
+    // MainPage inheriting from ContentPage
     public partial class MainPage : ContentPage
     {
         // Instantiate the API communicator
@@ -85,7 +86,7 @@ namespace UnsplashApp
             await Shell.Current.GoToAsync(nameof(SettingsPage));
         }
 
-        private async void OnLoadCollectionsClicked(object sender, EventArgs e)
+        private async void LoadCollections()
         {
             try
             {
@@ -95,18 +96,24 @@ namespace UnsplashApp
                 List<UnsplashCollection>? collections =
                     JsonSerializer.Deserialize<List<UnsplashCollection>>(response);
 
-                int count = collections?.Count ?? 0;
-
                 CollectionsView.ItemsSource = collections;
-
-                CollectionsStatusLabel.Text =
-                    $"Collections received: {count}";
             }
 
             catch (Exception ex)
             {
-                CollectionsStatusLabel.Text = ex.Message;
+                await DisplayAlertAsync("Error", ex.Message, "Ok");
             }
+        }
+        /* On each load of Home Search Page, fetch Collection Batch Size
+           from settings, then LoadCollections(), displaying them all. */
+        // We must modify OnAppearing() to insert LoadCollections()
+        // Maintain 'protected' status of original OnAppearing
+        // 'override' it with our new definition
+        protected override void OnAppearing()
+        {
+            // Access super() of MainPage
+            base.OnAppearing();
+            LoadCollections();
         }
     }
 }
