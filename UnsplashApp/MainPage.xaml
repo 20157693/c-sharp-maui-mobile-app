@@ -4,34 +4,44 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="UnsplashApp.MainPage"
     Title="Unsplash Search">
+    <!-- Selection Mode: Single, for single item selection at once -->
+    <!-- 'Selection' only applies to selectable items, hence not Search Bar -->
+    <CollectionView
+    x:Name="CollectionsView"
+    SelectionMode="Single">
+    <!-- SelectionChanged="OnCollectionSelected"> -->
+        <!-- Bunch of header items (not selectable) -->
+        <CollectionView.Header>
 
-    <VerticalStackLayout
-    Padding="30,0"
-    Spacing="25" >
+            <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25" >
 
-        <Button
-        Text="Settings"
-        Clicked="OnSettingsClicked" />
+                <Button
+                Text="Settings"
+                Clicked="OnSettingsClicked" />
 
-        <Entry
-        x:Name="SearchEntry"
-        Placeholder="Enter something to search" />
+                <Entry
+                x:Name="SearchEntry"
+                Placeholder="Enter something to search" />
 
-        <Button
-        Text="Search"
-        Clicked="OnSearchClicked" />
+                <Button
+                Text="Search"
+                Clicked="OnSearchClicked" />
 
-        <Label
-        x:Name="StatusLabel"
-        Text="Enter a keyword and click Search" />
+                <Label
+                x:Name="StatusLabel"
+                Text="Enter a keyword and click Search" />
 
-        <CollectionView
-        x:Name="CollectionsView"
-        HeightRequest="350">
+            </VerticalStackLayout>
 
-            <CollectionView.ItemTemplate>
+        </CollectionView.Header>
+        <!-- Bunch of selectable items -->
+        <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <VerticalStackLayout Spacing="5" Padding="5">
+                    <VerticalStackLayout 
+                        Padding="30,5"
+                        Spacing="5" >
 
                         <Image
                         Source="{Binding CoverPhoto.Urls.Small}"
@@ -46,8 +56,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
 
-        </CollectionView>
+    </CollectionView>
         
-    </VerticalStackLayout>
 
 </ContentPage>
