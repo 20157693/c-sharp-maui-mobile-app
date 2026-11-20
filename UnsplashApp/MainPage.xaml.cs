@@ -84,5 +84,27 @@ namespace UnsplashApp
         {
             await Shell.Current.GoToAsync(nameof(SettingsPage));
         }
+
+        private async void OnLoadCollectionsClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                // Get JSON response from Unsplash for Collections
+                string response = await _unsplashService.GetCollectionsAsync();
+                // Impute response in a List of Classes
+                List<UnsplashCollection>? collections =
+                    JsonSerializer.Deserialize<List<UnsplashCollection>>(response);
+
+                int count = collections?.Count ?? 0;
+
+                CollectionsStatusLabel.Text =
+                    $"Collections received: {count}";
+            }
+
+            catch (Exception ex)
+            {
+                CollectionsStatusLabel.Text = ex.Message;
+            }
+        }
     }
 }

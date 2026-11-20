@@ -9,6 +9,10 @@
     Padding="30,0"
     Spacing="25" >
 
+        <Button
+        Text="Settings"
+        Clicked="OnSettingsClicked" />
+
         <Label
         Text="Unsplash Photo Search"
         FontSize="24" />
@@ -21,13 +25,18 @@
         Text="Search"
         Clicked="OnSearchClicked" />
 
-        <Button
-        Text="Settings"
-        Clicked="OnSettingsClicked" />
-
         <Label
-            x:Name="StatusLabel"
-            Text="Enter a keyword and click Search" />
+        x:Name="StatusLabel"
+        Text="Enter a keyword and click Search" />
+
+        <Button
+        Text="LoadCollections"
+        Clicked="OnLoadCollectionsClicked" />
+
+        <!-- Text to display number of collections. -->
+        <Label
+        x:Name="CollectionsStatusLabel"
+        Text="Collections not loaded." />
         
     </VerticalStackLayout>
 
