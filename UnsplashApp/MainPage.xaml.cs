@@ -97,6 +97,8 @@ namespace UnsplashApp
 
                 int count = collections?.Count ?? 0;
 
+                CollectionsView.ItemsSource = collections;
+
                 CollectionsStatusLabel.Text =
                     $"Collections received: {count}";
             }

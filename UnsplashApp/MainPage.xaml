@@ -13,10 +13,6 @@
         Text="Settings"
         Clicked="OnSettingsClicked" />
 
-        <Label
-        Text="Unsplash Photo Search"
-        FontSize="24" />
-
         <Entry
         x:Name="SearchEntry"
         Placeholder="Enter something to search" />
@@ -37,6 +33,29 @@
         <Label
         x:Name="CollectionsStatusLabel"
         Text="Collections not loaded." />
+
+        <CollectionView
+        x:Name="CollectionsView"
+        HeightRequest="350">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Spacing="5" Padding="5">
+
+                        <Image
+                        Source="{Binding CoverPhoto.Urls.Small}"
+                        HeightRequest="150"
+                        Aspect="AspectFill" />
+
+                        <Label
+                        Text="{Binding Title}"
+                        FontSize="16" />
+
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
         
     </VerticalStackLayout>
 
