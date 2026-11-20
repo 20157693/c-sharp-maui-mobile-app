@@ -86,6 +86,14 @@ namespace UnsplashApp
             await Shell.Current.GoToAsync(nameof(SettingsPage));
         }
 
+        private async void OnCollectionSelected(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.FirstOrDefault() is UnsplashCollection collection)
+            {
+                CollectionsView.SelectedItem = null;
+            }
+        }
+
         private async void LoadCollections()
         {
             try

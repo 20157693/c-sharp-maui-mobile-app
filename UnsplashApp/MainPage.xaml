@@ -8,8 +8,8 @@
     <!-- 'Selection' only applies to selectable items, hence not Search Bar -->
     <CollectionView
     x:Name="CollectionsView"
-    SelectionMode="Single">
-    <!-- SelectionChanged="OnCollectionSelected"> -->
+    SelectionMode="Single"
+    SelectionChanged="OnCollectionSelected">
         <!-- Bunch of header items (not selectable) -->
         <CollectionView.Header>
 
