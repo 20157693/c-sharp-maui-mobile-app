@@ -22,8 +22,16 @@ public partial class SettingsPage : ContentPage
     {
         // Save the selected values
         if (AppearancePicker.SelectedItem != null)
-            Preferences.Set("Appearance",
-                AppearancePicker.SelectedItem.ToString());
+        {
+            string appearance = AppearancePicker.SelectedItem.ToString();
+
+            Preferences.Set("Appearance", appearance);
+
+            if (appearance == "Dark")
+                Application.Current!.UserAppTheme = AppTheme.Dark;
+            else
+                Application.Current!.UserAppTheme = AppTheme.Light;
+        }
     }
 
     private void OnImagesChanged(object sender, EventArgs e)
