@@ -20,6 +20,41 @@ namespace UnsplashApp
             InitializeComponent();
         }
 
+        private async void LoadCollections()
+        {
+            try
+            {
+                // Get JSON response from Unsplash for Collections
+                string response = await _unsplashService.GetCollectionsAsync();
+                // Impute response in a List of Classes
+                List<UnsplashCollection>? collections =
+                    JsonSerializer.Deserialize<List<UnsplashCollection>>(response);
+
+                CollectionsView.ItemsSource = collections;
+            }
+
+            catch (Exception ex)
+            {
+                await DisplayAlertAsync("Error", ex.Message, "Ok");
+            }
+        }
+        /* On each load of Home Search Page, fetch Collection Batch Size
+           from settings, then LoadCollections(), displaying them all. */
+        // We must modify OnAppearing() to insert LoadCollections()
+        // Maintain 'protected' status of original OnAppearing
+        // 'override' it with our new definition
+        protected override void OnAppearing()
+        {
+            // Access super() of MainPage
+            base.OnAppearing();
+            LoadCollections();
+        }
+
+        private async void OnSettingsClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(SettingsPage));
+        }
+
         private async void OnSearchClicked(object sender, EventArgs e)
         {
             // User input from search bar
@@ -81,47 +116,43 @@ namespace UnsplashApp
             }
         }
 
-        private async void OnSettingsClicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync(nameof(SettingsPage));
-        }
-
         private async void OnCollectionSelected(object sender, SelectionChangedEventArgs e)
         {
+            // Save clicked item into a variable
             if (e.CurrentSelection.FirstOrDefault() is UnsplashCollection collection)
             {
+                // Clear selection
                 CollectionsView.SelectedItem = null;
-            }
-        }
 
-        private async void LoadCollections()
-        {
-            try
-            {
-                // Get JSON response from Unsplash for Collections
-                string response = await _unsplashService.GetCollectionsAsync();
-                // Impute response in a List of Classes
-                List<UnsplashCollection>? collections =
-                    JsonSerializer.Deserialize<List<UnsplashCollection>>(response);
+                try
+                {
+                    // Send API request to receive group of photos
+                    string response =
+                        await _unsplashService.GetCollectionPhotosAsync(collection.Id!);
+                    // Deserialise into a list
+                    List<Photo>? photos =
+                        JsonSerializer.Deserialize<List<Photo>>(response);
+                    // Store all photos in 'result'
+                    SearchResult result = new SearchResult
+                    {
+                        Total = photos?.Count ?? 0,
+                        Results = photos
+                    };
 
-                CollectionsView.ItemsSource = collections;
-            }
+                    await Shell.Current.GoToAsync(
+                        nameof(ResultsPage),
+                        new ShellNavigationQueryParameters
+                        {
+                            { "SearchResult", result }
+                        }
+                    );
+                }
 
-            catch (Exception ex)
-            {
-                await DisplayAlertAsync("Error", ex.Message, "Ok");
+                catch (Exception ex)
+                {
+                    await DisplayAlertAsync("Error", ex.Message, "Ok");
+                }
             }
-        }
-        /* On each load of Home Search Page, fetch Collection Batch Size
-           from settings, then LoadCollections(), displaying them all. */
-        // We must modify OnAppearing() to insert LoadCollections()
-        // Maintain 'protected' status of original OnAppearing
-        // 'override' it with our new definition
-        protected override void OnAppearing()
-        {
-            // Access super() of MainPage
-            base.OnAppearing();
-            LoadCollections();
         }
     }
 }

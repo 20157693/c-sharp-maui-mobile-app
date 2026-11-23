@@ -51,5 +51,17 @@ namespace UnsplashApp.Services
 
             return response;
         }
+
+        public async Task<string> GetCollectionPhotosAsync(string id)
+        {
+            string perPage = Preferences.Get("ImagesPerPage", "10");
+
+            string url = "https://api.unsplash.com/collections/"
+                + id + "/photos?per_page=" + perPage;
+
+            string response = await _httpClient.GetStringAsync(url);
+            // return JSON array
+            return response;
+        }
     }
 }
