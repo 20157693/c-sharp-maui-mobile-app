@@ -1,6 +1,4 @@
-﻿// Import JSON
-using System.Text.Json;
-// Import Services; the API communicator
+﻿// Import Services; the API communicator
 using UnsplashApp.Services;
 // Import Models; the JSON parsers
 using UnsplashApp.Models;
@@ -24,11 +22,9 @@ namespace UnsplashApp
         {
             try
             {
-                // Get JSON response from Unsplash for Collections
-                string response = await _unsplashService.GetCollectionsAsync();
-                // Impute response in a List of Classes
+                // Make API request and parse response into a List of Collections
                 List<UnsplashCollection>? collections =
-                    JsonSerializer.Deserialize<List<UnsplashCollection>>(response);
+                    await _unsplashService.GetCollectionsAsync();
 
                 CollectionsView.ItemsSource = collections;
             }
@@ -71,13 +67,9 @@ namespace UnsplashApp
 
             try
             {
-                string response = await _unsplashService.SearchPhotosAsync(search);
-
-                /* 'result' is a variable containing class 'SearchResult'
-                    into which JSON has been parsed and distributed into
-                    its fields. */
-                // 'result' is the partially parsed JSON.
-                SearchResult? result = JsonSerializer.Deserialize<SearchResult>(response);
+                // API request for search term and store in result
+                SearchResult? result =
+                    await _unsplashService.SearchPhotosAsync(search);
 
                 if (result == null)
                 {
@@ -126,12 +118,9 @@ namespace UnsplashApp
 
                 try
                 {
-                    // Send API request to receive group of photos
-                    string response =
-                        await _unsplashService.GetCollectionPhotosAsync(collection.Id!);
-                    // Deserialise into a list
+                    // Send API request to receive group of photos from collection
                     List<Photo>? photos =
-                        JsonSerializer.Deserialize<List<Photo>>(response);
+                        await _unsplashService.GetCollectionPhotosAsync(collection.Id!);
                     // Store all photos in 'result'
                     SearchResult result = new SearchResult
                     {

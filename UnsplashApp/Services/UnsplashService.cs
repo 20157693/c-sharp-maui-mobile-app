@@ -1,8 +1,11 @@
 ﻿using System.Net.Http;
+// Import JSON
+using System.Text.Json;
+using UnsplashApp.Models;
 
 namespace UnsplashApp.Services
 {
-    public class UnsplashService
+    internal class UnsplashService
     {   
         // private for security
         private readonly HttpClient _httpClient;
@@ -25,7 +28,7 @@ namespace UnsplashApp.Services
         parallel. */
         // public for accessibility
         // Async to continue to run while request is pending
-        public async Task<string> SearchPhotosAsync(string query)
+        public async Task<SearchResult?> SearchPhotosAsync(string query)
         {
             // Dig into the computer for the value; else, use 10.
             string perPage = Preferences.Get("ImagesPerPage", "10");
@@ -36,19 +39,19 @@ namespace UnsplashApp.Services
 
             string response = await _httpClient.GetStringAsync(url);
 
-            return response;
+            return JsonSerializer.Deserialize<SearchResult>(response);
         }
 
-        public async Task<string> GetPhotoDetailsAsync(string id)
+        public async Task<Photo?> GetPhotoDetailsAsync(string id)
         {
             string url = "https://api.unsplash.com/photos/" + id;
 
             string response = await _httpClient.GetStringAsync(url);
 
-            return response;
+            return JsonSerializer.Deserialize<Photo>(response);
         }
-        // Send request using Collection Batch Size to get JSON
-        public async Task<string> GetCollectionsAsync()
+        // Send request using Collection Batch Size to get JSON, then parse.
+        public async Task<List<UnsplashCollection>?> GetCollectionsAsync()
         {
             // Fetch set value for number of collections; else, use 3.
             string perPage = Preferences.Get("CollectionsPerPage", "3");
@@ -58,19 +61,20 @@ namespace UnsplashApp.Services
 
             string response = await _httpClient.GetStringAsync(url);
 
-            return response;
+            return JsonSerializer.Deserialize<List<UnsplashCollection>>(response);
         }
 
-        public async Task<string> GetCollectionPhotosAsync(string id)
+        public async Task<List<Photo>?> GetCollectionPhotosAsync(string id)
         {
             string perPage = Preferences.Get("ImagesPerPage", "10");
 
             string url = "https://api.unsplash.com/collections/"
                 + id + "/photos?per_page=" + perPage;
 
+            // Get JSON array
             string response = await _httpClient.GetStringAsync(url);
-            // return JSON array
-            return response;
+            // Parse the JSON into a List of Photos
+            return JsonSerializer.Deserialize<List<Photo>>(response);
         }
     }
 }

@@ -1,6 +1,5 @@
 using UnsplashApp.Models;
 using UnsplashApp.Services;
-using System.Text.Json;
 
 namespace UnsplashApp.Pages;
 // We will now receive the passed class Photo as selectedPhoto
@@ -35,12 +34,8 @@ public partial class PhotoDetailsPage : ContentPage, IQueryAttributable
 
             try
             {
-                // Send API request for the image details
-                string response =
-                    await _unsplashService.GetPhotoDetailsAsync(photo.Id);
-
                 Photo? details =
-                    JsonSerializer.Deserialize<Photo>(response);
+                    await _unsplashService.GetPhotoDetailsAsync(photo.Id);
 
                 if (details == null)
                 {
