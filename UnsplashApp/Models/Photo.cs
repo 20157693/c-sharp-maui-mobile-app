@@ -21,7 +21,26 @@ namespace UnsplashApp.Models
         // Nested classes for nested data structures
         // Urls Nullable
         public PhotoUrls? Urls { get; set; }
+
+        [JsonPropertyName("width")]
+        public int? Width { get; set; }
+
+        [JsonPropertyName("height")]
+        public int? Height { get; set; }
+
+        [JsonPropertyName("likes")]
+        public int? Likes { get; set; }
+
+        [JsonPropertyName("user")]
+        public PhotoUser? User { get; set; }
+
+        [JsonPropertyName("exif")]
+        public PhotoExif? Exif { get; set; }
+
+        [JsonPropertyName("location")]
+        public PhotoLocation? Location { get; set; }
     }
+
     // This class to fit in the above class
     internal class PhotoUrls
     {
@@ -32,5 +51,38 @@ namespace UnsplashApp.Models
 
         [JsonPropertyName("small")]
         public string? Small { get; set; }
+    }
+
+    internal class PhotoUser
+    {
+        [JsonPropertyName("name")]
+        public string? Name { get; set; }
+    }
+
+    internal class PhotoExif
+    {
+        [JsonPropertyName("make")]
+        public string? Make { get; set; }
+
+        [JsonPropertyName("model")]
+        public string? Model { get; set; }
+
+        [JsonPropertyName("exposure_time")]
+        public string? ExposureTime { get; set; }
+
+        [JsonPropertyName("aperture")]
+        public string? Aperture { get; set; }
+
+        [JsonPropertyName("focal_length")]
+        public string? FocalLength { get; set; }
+
+        [JsonPropertyName("iso")]
+        public int? Iso { get; set; }
+    }
+
+    internal class PhotoLocation
+    {
+        [JsonPropertyName("name")]
+        public string? Name { get; set; }
     }
 }

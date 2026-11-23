@@ -38,6 +38,15 @@ namespace UnsplashApp.Services
 
             return response;
         }
+
+        public async Task<string> GetPhotoDetailsAsync(string id)
+        {
+            string url = "https://api.unsplash.com/photos/" + id;
+
+            string response = await _httpClient.GetStringAsync(url);
+
+            return response;
+        }
         // Send request using Collection Batch Size to get JSON
         public async Task<string> GetCollectionsAsync()
         {

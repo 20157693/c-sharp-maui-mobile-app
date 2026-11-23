@@ -5,23 +5,37 @@
     x:Class="UnsplashApp.Pages.PhotoDetailsPage"
     Title="PhotoDetailsPage">
 
-    <VerticalStackLayout Padding="20" Spacing="10">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
 
-        <Label
-            Text="Photo in Fullscreen"
-            FontSize="24" />
-        <!--Set fixed height at 350-->
-        <!--Scale image proportionally to fit device screen-->
-        <Image
-            x:Name="SelectedPhotoImage"
-            HeightRequest="350"
-            Aspect="AspectFit" />
+            <Label
+                Text="Photo in Fullscreen"
+                FontSize="24" />
+            <!--Set fixed height at 350-->
+            <!--Scale image proportionally to fit device screen-->
+            <Image
+                x:Name="SelectedPhotoImage"
+                HeightRequest="350"
+                Aspect="AspectFit" />
 
-        <Label
-            x:Name="PhotoDescription"
-            Text="Waiting for photograph..."
-            FontSize="16" />
+            <VerticalStackLayout Spacing="8">
 
-    </VerticalStackLayout>
+                <Label Text="Photograph Details"
+                       FontSize="20"
+                       FontAttributes="Bold" />
+
+                <Label x:Name="PhotographerLabel" />
+                <Label x:Name="ResolutionLabel" />
+                <Label x:Name="CameraLabel" />
+                <Label x:Name="ShutterLabel" />
+                <Label x:Name="ApertureLabel" />
+                <Label x:Name="IsoLabel" />
+                <Label x:Name="FocalLengthLabel" />
+                <Label x:Name="LocationLabel" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>
