@@ -13,10 +13,32 @@
         <!-- Bunch of header items (not selectable) -->
         <CollectionView.Header>
 
-            <VerticalStackLayout
+            <StackLayout
             Padding="30,0"
             Spacing="25"
             Margin="0,0,0,25" >
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup>
+                        <VisualState Name="Portrait">
+                            <VisualState.StateTriggers>
+                                <OrientationStateTrigger Orientation="Portrait" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Property="Orientation" Value="Vertical" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState Name="Landscape">
+                            <VisualState.StateTriggers>
+                                <OrientationStateTrigger Orientation="Landscape" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Property="Orientation" Value="Horizontal" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
 
                 <Button
                 Text="Settings"
@@ -34,7 +56,7 @@
                 x:Name="StatusLabel"
                 Text="Enter a keyword and click Search" />
 
-            </VerticalStackLayout>
+            </StackLayout>
 
         </CollectionView.Header>
         <!-- Bunch of selectable items -->
