@@ -4,6 +4,7 @@ using UnsplashApp.Services;
 using UnsplashApp.Models;
 // Import Pages; the navigation pages
 using UnsplashApp.Pages;
+using UnsplashApp.Controllers;
 
 namespace UnsplashApp
 {
@@ -12,10 +13,12 @@ namespace UnsplashApp
     {
         // Instantiate the API communicator
         private readonly UnsplashService _unsplashService = new();
+        private readonly UnsplashController _controller;
 
         public MainPage()
         {
             InitializeComponent();
+            _controller = new UnsplashController(_unsplashService);
         }
 
         private async void LoadCollections()
@@ -24,7 +27,7 @@ namespace UnsplashApp
             {
                 // Make API request and parse response into a List of Collections
                 List<UnsplashCollection>? collections =
-                    await _unsplashService.GetCollectionsAsync();
+                    await _controller.GetCollectionsAsync();
 
                 CollectionsView.ItemsSource = collections;
             }
@@ -57,19 +60,13 @@ namespace UnsplashApp
             // Nullable string
             string? search = SearchEntry.Text;
 
-            if (string.IsNullOrWhiteSpace(search))
-            {
-                StatusLabel.Text = "Please enter a search keyword.";
-                return;
-            }
-
             StatusLabel.Text = "Searching Unsplash…";
 
             try
             {
                 // API request for search term and store in result
                 SearchResult? result =
-                    await _unsplashService.SearchPhotosAsync(search);
+                    await _controller.SearchAsync(search);
 
                 if (result == null)
                 {
@@ -102,6 +99,10 @@ namespace UnsplashApp
                    available in that namespace. */
             }
 
+            catch (ArgumentException ex)
+            {
+                StatusLabel.Text = ex.Message;
+            }
             catch (HttpRequestException)
             {
                 StatusLabel.Text = "The API request failed.";
@@ -119,14 +120,9 @@ namespace UnsplashApp
                 try
                 {
                     // Send API request to receive group of photos from collection
-                    List<Photo>? photos =
-                        await _unsplashService.GetCollectionPhotosAsync(collection.Id!);
                     // Store all photos in 'result'
-                    SearchResult result = new SearchResult
-                    {
-                        Total = photos?.Count ?? 0,
-                        Results = photos
-                    };
+                    SearchResult result =
+                        await _controller.GetCollectionPhotosAsync(collection.Id!);
 
                     await Shell.Current.GoToAsync(
                         nameof(ResultsPage),

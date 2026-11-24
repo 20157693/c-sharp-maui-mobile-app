@@ -5,7 +5,7 @@ using UnsplashApp.Models;
 
 namespace UnsplashApp.Services
 {
-    internal class UnsplashService
+    internal class UnsplashService : IUnsplashService
     {   
         // private for security
         private readonly HttpClient _httpClient;

@@ -1,15 +1,18 @@
 using UnsplashApp.Models;
 using UnsplashApp.Services;
+using UnsplashApp.Controllers;
 
 namespace UnsplashApp.Pages;
 // We will now receive the passed class Photo as selectedPhoto
 public partial class PhotoDetailsPage : ContentPage, IQueryAttributable
 {
     private readonly UnsplashService _unsplashService = new();
+    private readonly UnsplashController _controller;
 
     public PhotoDetailsPage()
     {
         InitializeComponent();
+        _controller = new UnsplashController(_unsplashService);
     }
     // The same as ResultsPage, receive passed class
     public async void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -35,7 +38,7 @@ public partial class PhotoDetailsPage : ContentPage, IQueryAttributable
             try
             {
                 Photo? details =
-                    await _unsplashService.GetPhotoDetailsAsync(photo.Id);
+                    await _controller.GetPhotoDetailsAsync(photo.Id);
 
                 if (details == null)
                 {
