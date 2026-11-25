@@ -1,0 +1,13 @@
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\bin\Debug\net10.0\UnsplashApp.Core.deps.json
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\bin\Debug\net10.0\UnsplashApp.Core.dll
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\bin\Debug\net10.0\UnsplashApp.Core.pdb
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\obj\Debug\net10.0\UnsplashApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\obj\Debug\net10.0\UnsplashApp.Core.AssemblyInfoInputs.cache
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\obj\Debug\net10.0\UnsplashApp.Core.AssemblyInfo.cs
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\obj\Debug\net10.0\UnsplashApp.Core.csproj.CoreCompileInputs.cache
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\obj\Debug\net10.0\UnsplashApp.Core.sourcelink.json
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\obj\Debug\net10.0\UnsplashApp.Core.dll
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\obj\Debug\net10.0\refint\UnsplashApp.Core.dll
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\obj\Debug\net10.0\UnsplashApp.Core.pdb
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\obj\Debug\net10.0\ref\UnsplashApp.Core.dll
+C:\Users\Administrator.LAPTOP-HQATV720\Desktop\CSharp MAUI\c-sharp-maui-mobile-app\UnsplashApp.Core\obj\Debug\net10.0\Unsplash.D436131B.Up2Date

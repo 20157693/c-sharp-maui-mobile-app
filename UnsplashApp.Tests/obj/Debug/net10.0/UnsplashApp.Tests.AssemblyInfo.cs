@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UnsplashApp.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2e9bfd3d7ee0eb189a2fb9372e6215e80737779")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2eb609e025fa66ebeb967abfb8f57bc01bf7c92")]
 [assembly: System.Reflection.AssemblyProductAttribute("UnsplashApp.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UnsplashApp.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

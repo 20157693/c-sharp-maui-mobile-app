@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="../UnsplashApp.Core/UnsplashApp.Core.csproj" Id="9b99271e-46d6-4237-a66b-2d77e1aa37db" />
+  <Project Path="../UnsplashApp.Tests/UnsplashApp.Tests.csproj" Id="56a9f2b4-0832-407b-8ccf-f2dd15c1485e" />
   <Project Path="UnsplashApp.csproj" />
 </Solution>
