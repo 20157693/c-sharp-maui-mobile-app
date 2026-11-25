@@ -1074,6 +1074,16 @@
             "related": ".xml"
           }
         }
+      },
+      "UnsplashApp.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/UnsplashApp.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UnsplashApp.Core.dll": {}
+        }
       }
     }
   },
@@ -2267,11 +2277,17 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
+    },
+    "UnsplashApp.Core/1.0.0": {
+      "type": "project",
+      "path": "../UnsplashApp.Core/UnsplashApp.Core.csproj",
+      "msbuildProject": "../UnsplashApp.Core/UnsplashApp.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "MSTest >= 4.0.2"
+      "MSTest >= 4.0.2",
+      "UnsplashApp.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2307,7 +2323,11 @@
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Administrator.LAPTOP-HQATV720\\Desktop\\CSharp MAUI\\c-sharp-maui-mobile-app\\UnsplashApp.Core\\UnsplashApp.Core.csproj": {
+              "projectPath": "C:\\Users\\Administrator.LAPTOP-HQATV720\\Desktop\\CSharp MAUI\\c-sharp-maui-mobile-app\\UnsplashApp.Core\\UnsplashApp.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
