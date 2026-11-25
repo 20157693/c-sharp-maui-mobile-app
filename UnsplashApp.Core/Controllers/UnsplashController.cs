@@ -3,7 +3,7 @@ using UnsplashApp.Services;
 
 namespace UnsplashApp.Controllers
 {
-    internal class UnsplashController
+    public class UnsplashController
     {
         private readonly IUnsplashService _service;
 

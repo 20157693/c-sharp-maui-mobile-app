@@ -2,7 +2,7 @@
 
 namespace UnsplashApp.Models;
 
-internal class UnsplashCollection
+public class UnsplashCollection
 {
     [JsonPropertyName("id")]
     public string? Id { get; set; }

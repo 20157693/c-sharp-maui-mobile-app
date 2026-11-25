@@ -2,7 +2,7 @@
 
 namespace UnsplashApp.Services
 {
-    internal interface IUnsplashService
+    public interface IUnsplashService
     {
         Task<SearchResult?> SearchPhotosAsync(string query);
 

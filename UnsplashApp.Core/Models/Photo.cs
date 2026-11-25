@@ -5,7 +5,7 @@ namespace UnsplashApp.Models
     // Some of the JSON contents go into here.
     // Pieces of data relating to Individual Image information.
     // Other pieces of info go into SearchResult.cs
-    internal class Photo
+    public class Photo
     {
         // All variable types Nullable
         [JsonPropertyName("id")]
@@ -42,7 +42,7 @@ namespace UnsplashApp.Models
     }
 
     // This class to fit in the above class
-    internal class PhotoUrls
+    public class PhotoUrls
     {
         /* The Nullability above accesses 'Regular'
         conditional to it being non-null. */
@@ -53,13 +53,13 @@ namespace UnsplashApp.Models
         public string? Small { get; set; }
     }
 
-    internal class PhotoUser
+    public class PhotoUser
     {
         [JsonPropertyName("name")]
         public string? Name { get; set; }
     }
 
-    internal class PhotoExif
+    public class PhotoExif
     {
         [JsonPropertyName("make")]
         public string? Make { get; set; }
@@ -80,7 +80,7 @@ namespace UnsplashApp.Models
         public int? Iso { get; set; }
     }
 
-    internal class PhotoLocation
+    public class PhotoLocation
     {
         [JsonPropertyName("name")]
         public string? Name { get; set; }
